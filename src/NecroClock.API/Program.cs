@@ -5,6 +5,7 @@ using NecroClock.Application.Interfaces.Repositories;
 using NecroClock.Application.Models;
 using NecroClock.Application.Services;
 using NecroClock.Infrastructure.Persistence;
+using NecroClock.Infrastructure.Repositories;
 using System.Text;
 
 namespace NecroClock.API
@@ -19,7 +20,7 @@ namespace NecroClock.API
 
             builder.Services.AddControllers();
 
-            builder.Services.AddScoped<IUserRepositorie, IUserRepositorie>();
+            builder.Services.AddScoped<IUserRepositorie, UserRepositorie>();
 
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<ITokenService, TokenService>();
