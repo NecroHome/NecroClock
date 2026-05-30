@@ -33,7 +33,7 @@ namespace NecroClock.Application.Services
             };
 
             user.Password = _passwordHasher.HashPassword(user, userDTO.Password);
-            _repositorie.AddNewUser(user);
+            await _repositorie.AddNewUser(user);
 
             return user;
         }
