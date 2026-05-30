@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using NecroClock.Application.Interfaces;
+using NecroClock.Application.Interfaces.Repositories;
 using NecroClock.Application.Models;
 using NecroClock.Application.Services;
 using NecroClock.Infrastructure.Persistence;
@@ -17,6 +18,8 @@ namespace NecroClock.API
             // Add services to the container.
 
             builder.Services.AddControllers();
+
+            builder.Services.AddScoped<IUserRepositorie, IUserRepositorie>();
 
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<ITokenService, TokenService>();

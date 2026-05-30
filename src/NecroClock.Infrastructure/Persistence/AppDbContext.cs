@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using NecroClock.Application.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,5 +16,7 @@ namespace NecroClock.Infrastructure.Persistence
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
         }
+
+        public DbSet<UserModel> Usuarios { get; set; }
     }
 }

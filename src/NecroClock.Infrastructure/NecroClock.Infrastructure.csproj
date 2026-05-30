@@ -18,4 +18,8 @@
     <Folder Include="Persistence\Configuration\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\NecroClock.Application\NecroClock.Application.csproj" />
+  </ItemGroup>
+
 </Project>
