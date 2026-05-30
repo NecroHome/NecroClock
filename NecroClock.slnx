@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/Itens de Solução/">
+    <File Path="docker-compose.yml" />
+    <File Path="Dockerfile" />
+  </Folder>
+  <Project Path="NecroClock.API/NecroClock.API.csproj" />
+  <Project Path="NecroClock.Application/NecroClock.Application.csproj" />
+  <Project Path="NecroClock.Infrastructure/NecroClock.Infrastructure.csproj" />
+</Solution>
