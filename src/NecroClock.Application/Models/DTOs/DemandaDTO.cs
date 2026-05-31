@@ -9,7 +9,7 @@ namespace NecroClock.Application.Models.DTOs
         public long Id { get; set; }
         public string NumeroDemanda { get; set; }
         public string Descricao { get; set; }
-        public DateTime Data { get; set; }
+        public DateOnly Data { get; set; }
         public long Horas { get; set; }
         public long UserId { get; set; }
 

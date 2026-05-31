@@ -69,7 +69,7 @@ namespace NecroClock.API.Controllers
 
         [Authorize]
         [HttpGet("GetDemandas")]
-        public async Task<IActionResult> GetDemandas(DateTime inicio, DateTime fim)
+        public async Task<IActionResult> GetDemandas(DateOnly inicio, DateOnly fim)
         {
             string user = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (!long.TryParse(user, out long userID))

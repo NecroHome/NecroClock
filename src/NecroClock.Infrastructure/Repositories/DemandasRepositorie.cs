@@ -46,11 +46,8 @@ namespace NecroClock.Infrastructure.Repositories
             return true;
         }
 
-        public async Task<List<DemandaModel>> GetDemandasByIntervalAndUserId(DateTime inicio, DateTime fim, long userID)
+        public async Task<List<DemandaModel>> GetDemandasByIntervalAndUserId(DateOnly inicio, DateOnly fim, long userID)
         {
-            inicio = inicio.Date;
-            fim = fim.Date;
-
             return await _context.Demandas
                 .Where(w =>
                     w.Data >= inicio &&

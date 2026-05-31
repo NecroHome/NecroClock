@@ -24,11 +24,13 @@ namespace NecroClock.Application.Services
             model.NumeroDemanda = dto.NumeroDemanda;
             model.Descricao = dto.Descricao;
 
-            model.Data = DateTime.Now.DayOfWeek switch
+            DateTime hoje = DateTime.Now;
+
+            model.Data = hoje.DayOfWeek switch
             {
-                DayOfWeek.Saturday => DateTime.Now.AddDays(2),
-                DayOfWeek.Sunday => DateTime.Now.AddDays(1),
-                _ => DateTime.Now
+                DayOfWeek.Saturday => DateOnly.FromDateTime(hoje.AddDays(2)),
+                DayOfWeek.Sunday => DateOnly.FromDateTime(hoje.AddDays(1)),
+                _ => DateOnly.FromDateTime(hoje)
             };
 
             model.Horas = dto.Horas;
@@ -66,7 +68,7 @@ namespace NecroClock.Application.Services
             return true;
         }
 
-        public async Task<List<DemandaDTO>> GetDemandas(DateTime inicio, DateTime fim, long userID)
+        public async Task<List<DemandaDTO>> GetDemandas(DateOnly inicio, DateOnly fim, long userID)
         {
             List<DemandaModel> demandas = await _demandaRepositorie.GetDemandasByIntervalAndUserId(inicio, fim, userID);
             return DemandaDTO.GenerateList(demandas);

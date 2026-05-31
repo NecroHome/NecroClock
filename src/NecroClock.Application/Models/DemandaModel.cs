@@ -23,7 +23,7 @@ namespace NecroClock.Application.Models
         public long Horas { get; set; }
 
         [Column("Data")]
-        public DateTime Data { get; set; }
+        public DateOnly Data { get; set; }
 
         [Column("UserId")]
         public long UserId { get; set; }
