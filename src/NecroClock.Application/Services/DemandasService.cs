@@ -23,16 +23,7 @@ namespace NecroClock.Application.Services
             DemandaModel model = new DemandaModel();
             model.NumeroDemanda = dto.NumeroDemanda;
             model.Descricao = dto.Descricao;
-
-            DateTime hoje = DateTime.Now;
-
-            model.Data = hoje.DayOfWeek switch
-            {
-                DayOfWeek.Saturday => DateOnly.FromDateTime(hoje.AddDays(2)),
-                DayOfWeek.Sunday => DateOnly.FromDateTime(hoje.AddDays(1)),
-                _ => DateOnly.FromDateTime(hoje)
-            };
-
+            model.Data = dto.Data;
             model.Horas = dto.Horas;
             model.UserId = userID;
 
@@ -50,6 +41,7 @@ namespace NecroClock.Application.Services
             }
 
             model.Descricao = dto.Descricao;
+            model.Data = dto.Data;
             model.Horas = dto.Horas;
 
             await _demandaRepositorie.UpdateDemanda(model);
