@@ -23,7 +23,14 @@ namespace NecroClock.Application.Services
             DemandaModel model = new DemandaModel();
             model.NumeroDemanda = dto.NumeroDemanda;
             model.Descricao = dto.Descricao;
-            model.Data = DateTime.Now;
+
+            model.Data = DateTime.Now.DayOfWeek switch
+            {
+                DayOfWeek.Saturday => DateTime.Now.AddDays(2),
+                DayOfWeek.Sunday => DateTime.Now.AddDays(1),
+                _ => DateTime.Now
+            };
+
             model.Horas = dto.Horas;
             model.UserId = userID;
 
