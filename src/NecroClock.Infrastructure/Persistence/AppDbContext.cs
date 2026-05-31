@@ -18,5 +18,6 @@ namespace NecroClock.Infrastructure.Persistence
         }
 
         public DbSet<UserModel> Usuarios { get; set; }
+        public DbSet<DemandaModel> Demandas { get; set; }
     }
 }

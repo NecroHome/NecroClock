@@ -21,9 +21,11 @@ namespace NecroClock.API
             builder.Services.AddControllers();
 
             builder.Services.AddScoped<IUserRepositorie, UserRepositorie>();
+            builder.Services.AddScoped<IDemandasRepositorie, DemandasRepositorie>();
 
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<ITokenService, TokenService>();
+            builder.Services.AddScoped<IDemandasService, DemandasService>();
 
             builder.Services.AddDbContext<AppDbContext>(options =>
             {
