@@ -12,6 +12,8 @@ namespace NecroClock.Application.Models.DTOs
         public DateOnly Data { get; set; }
         public long Horas { get; set; }
         public long UserId { get; set; }
+        public string SQL { get; set; }
+        public string Anotacoes { get; set; }
 
         public DemandaDTO()
         {
@@ -26,6 +28,8 @@ namespace NecroClock.Application.Models.DTOs
             Data = model.Data;
             Horas = model.Horas;
             UserId = model.UserId;
+            SQL = model.SQL;
+            Anotacoes = model.Anotacoes;
         }
 
         public static List<DemandaDTO> GenerateList(List<DemandaModel> list)

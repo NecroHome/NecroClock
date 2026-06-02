@@ -33,6 +33,16 @@ namespace NecroClock.Application.Services
             if (model != null)
             {
                 model.Horas = model.Horas + dto.Horas;
+                if (dto.SQL != model.SQL && !String.IsNullOrWhiteSpace(dto.SQL))
+                {
+                    model.SQL = model.SQL + '\n' + dto.SQL;
+                }
+
+                if (dto.Anotacoes != model.Anotacoes && !String.IsNullOrWhiteSpace(dto.Anotacoes))
+                {
+                    model.Anotacoes = model.Anotacoes + '\n' + dto.Anotacoes;
+                }
+
                 await _demandaRepositorie.UpdateDemanda(model);
                 return true;
             }
@@ -43,6 +53,8 @@ namespace NecroClock.Application.Services
             model.Data = dto.Data;
             model.Horas = dto.Horas;
             model.UserId = userID;
+            model.SQL = dto.SQL;
+            model.Anotacoes = dto.Anotacoes;
 
             await _demandaRepositorie.AddDemanda(model);
 
@@ -60,6 +72,8 @@ namespace NecroClock.Application.Services
             model.Descricao = dto.Descricao;
             model.Data = dto.Data;
             model.Horas = dto.Horas;
+            model.SQL = dto.SQL;
+            model.Anotacoes = dto.Anotacoes;
 
             await _demandaRepositorie.UpdateDemanda(model);
 

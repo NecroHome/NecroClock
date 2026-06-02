@@ -27,5 +27,11 @@ namespace NecroClock.Application.Models
 
         [Column("UserId")]
         public long UserId { get; set; }
+
+        [Column("SQL")]
+        public string SQL { get; set; }
+
+        [Column("Anotacoes")]
+        public string Anotacoes { get; set; }
     }
 }
