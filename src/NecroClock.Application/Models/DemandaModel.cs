@@ -14,10 +14,10 @@ namespace NecroClock.Application.Models
         public long Id { get; set; }
 
         [Column("NumeroDemanda")]
-        public string NumeroDemanda { get; set; }
+        public string? NumeroDemanda { get; set; }
 
         [Column("Descricao")]
-        public string Descricao { get; set; }
+        public string? Descricao { get; set; }
 
         [Column("Horas")]
         public long Horas { get; set; }
@@ -29,9 +29,9 @@ namespace NecroClock.Application.Models
         public long UserId { get; set; }
 
         [Column("SQL")]
-        public string SQL { get; set; }
+        public string? SQL { get; set; }
 
         [Column("Anotacoes")]
-        public string Anotacoes { get; set; }
+        public string? Anotacoes { get; set; }
     }
 }
