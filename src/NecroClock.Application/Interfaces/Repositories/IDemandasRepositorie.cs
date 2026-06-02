@@ -14,5 +14,6 @@ namespace NecroClock.Application.Interfaces.Repositories
         Task<bool> DeleteDemanda(DemandaModel model);
         Task<List<DemandaModel>> GetDemandasByIntervalAndUserId(DateOnly inicio, DateOnly fim, long userID);
         Task<List<DemandaModel>> FilterDemandasBySearchTermAndUserID(string busca, long userID);
+        Task<DemandaModel> FindDemandaPorNumeroEUserIDMesmaSemana(DateOnly inicio, DateOnly fim, string numeroDemanda, long userID);
     }
 }
