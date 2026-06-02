@@ -2,6 +2,7 @@
 using NecroClock.Application.Interfaces.Repositories;
 using NecroClock.Application.Models;
 using NecroClock.Application.Models.DTOs;
+using NecroClock.Application.Util;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,7 +21,23 @@ namespace NecroClock.Application.Services
 
         public async Task<bool> AddDemanda(DemandaDTO dto, long userID)
         {
-            DemandaModel model = new DemandaModel();
+            /**
+             * Check if theres already a Demanda with that number for that user in the same wekk
+             * If it does, them add the hours to the existing entry
+             * otherwise, create a new entry
+             */
+            DateOnly inicio = DataUtil.ObterInicioSemana(dto.Data);
+            DateOnly fim = DataUtil.ObterFimSemana(dto.Data);
+
+            DemandaModel model = await _demandaRepositorie.FindDemandaPorNumeroEUserIDMesmaSemana(inicio, fim, dto.NumeroDemanda, userID);
+            if (model != null)
+            {
+                model.Horas = model.Horas + dto.Horas;
+                await _demandaRepositorie.UpdateDemanda(model);
+                return true;
+            }
+
+            model = new DemandaModel();
             model.NumeroDemanda = dto.NumeroDemanda;
             model.Descricao = dto.Descricao;
             model.Data = dto.Data;

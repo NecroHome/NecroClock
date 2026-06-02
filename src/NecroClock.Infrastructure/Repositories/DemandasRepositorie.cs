@@ -64,5 +64,16 @@ namespace NecroClock.Infrastructure.Repositories
                     w.UserId == userID)
                 .ToListAsync();
         }
+
+        public async Task<DemandaModel> FindDemandaPorNumeroEUserIDMesmaSemana(DateOnly inicio, DateOnly fim, string numeroDemanda, long userID)
+        {
+            return await _context.Demandas
+                .Where(w =>
+                    w.Data >= inicio &&
+                    w.Data <= fim &&
+                    w.NumeroDemanda == numeroDemanda &&
+                    w.UserId == userID)
+                .FirstOrDefaultAsync();
+        }
     }
 }
