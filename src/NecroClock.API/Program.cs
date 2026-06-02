@@ -6,6 +6,8 @@ using NecroClock.Application.Models;
 using NecroClock.Application.Services;
 using NecroClock.Infrastructure.Persistence;
 using NecroClock.Infrastructure.Repositories;
+using NecroClock.Application.Extensions;
+using NecroClock.Application.Middleware;
 using System.Text;
 
 namespace NecroClock.API
@@ -77,13 +79,14 @@ namespace NecroClock.API
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.MapOpenApi();
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.UseGlobalExceptionHandler();
 
             app.UseCors("CorsPolicy");
             app.UseAuthentication();
