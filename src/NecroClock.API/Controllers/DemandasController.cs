@@ -79,5 +79,18 @@ namespace NecroClock.API.Controllers
 
             return Ok(await _demandasService.GetDemandas(inicio, fim, userID));
         }
+
+        [Authorize]
+        [HttpGet("FiltrarDemandas")]
+        public async Task<IActionResult> FiltrarDemandas(string busca)
+        {
+            string user = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (!long.TryParse(user, out long userID))
+            {
+                return Unauthorized();
+            }
+
+            return Ok(await _demandasService.FiltrarDemandas(busca, userID));
+        }
     }
 }

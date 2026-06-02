@@ -11,5 +11,6 @@ namespace NecroClock.Application.Interfaces
         Task<bool> UpdateDemanda(DemandaDTO dto, long userID);
         Task<bool> DeleteDemanda(long demandaID, long userID);
         Task<List<DemandaDTO>> GetDemandas(DateOnly inicio, DateOnly fim, long userID);
+        Task<List<DemandaDTO>> FiltrarDemandas(string busca, long userID);
     }
 }

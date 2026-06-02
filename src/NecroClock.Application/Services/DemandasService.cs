@@ -65,5 +65,11 @@ namespace NecroClock.Application.Services
             List<DemandaModel> demandas = await _demandaRepositorie.GetDemandasByIntervalAndUserId(inicio, fim, userID);
             return DemandaDTO.GenerateList(demandas);
         }
+
+        public async Task<List<DemandaDTO>> FiltrarDemandas(string busca, long userID)
+        {
+            List<DemandaModel> demandas = await _demandaRepositorie.FilterDemandasBySearchTermAndUserID(busca, userID);
+            return DemandaDTO.GenerateList(demandas);
+        }
     }
 }

@@ -55,5 +55,14 @@ namespace NecroClock.Infrastructure.Repositories
                     w.UserId == userID)
                 .ToListAsync();
         }
+
+        public async Task<List<DemandaModel>> FilterDemandasBySearchTermAndUserID(string busca, long userID)
+        {
+            return await _context.Demandas
+                .Where(w =>
+                    (w.NumeroDemanda.Contains(busca) || w.Descricao.Contains(busca)) &&
+                    w.UserId == userID)
+                .ToListAsync();
+        }
     }
 }
